@@ -1,0 +1,20 @@
+<main>
+  <section>
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+      <h2>Welcome back</h2>
+      <p>Log in to your account!</p>
+
+      <mat-form-field [formGroup]="signInForm">
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+      </mat-form-field>
+      <mat-form-field [formGroup]="signInForm">
+        <input matInput placeholder="Enter your password" type="password" [formControl]="password" required>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="accent">Sign In</button>
+      <button mat-raised-button (click)="googleLogin()" >Google</button>
+      <button mat-raised-button (click)="facebookLogin()" >Facebook</button>
+
+    </form>
+  </section>
+</main>

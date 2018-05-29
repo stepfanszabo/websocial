@@ -1,0 +1,17 @@
+<main>
+  <section>
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <h2>Welcome to SocialWeb</h2>
+      <p>Let's get started!</p>
+
+      <mat-form-field [formGroup]="signUpForm">
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+      </mat-form-field>
+      <mat-form-field [formGroup]="signUpForm">
+        <input matInput placeholder="Enter your password" type="password" [formControl]="password" required>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="accent">Sign Up</button>
+    </form>
+  </section>
+</main>
