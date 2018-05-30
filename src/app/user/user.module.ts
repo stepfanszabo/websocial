@@ -6,18 +6,20 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
 import { UserService } from './user.service';
 
-import { SharedModule } from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { PostModule } from '../post/post.module';
 
 const routes: Routes = [
   { path: "dashboard", component: UserDashboardComponent, data: { title: "My dashboard"}},
   { path: "users", component: UserListComponent, data: { title: "Users"}},
   { path: "users/:id", component: UserDetailComponent, data: { title: "profile"}},
-]
+];
 
 @NgModule({
   imports: [
     CommonModule,
+    PostModule,
     SharedModule,
     RouterModule.forChild(routes)
   ],
