@@ -41,6 +41,14 @@ export class AuthService {
     });
   }
 
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : null;
+  }
+
   emailSignIn(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                 .then(() => console.log("logged in"))

@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent, data: { title: 'SignIn'} },
   { path: 'signup', component: SignupComponent, data: { title: 'SignUp'} },
   { path: 'reset-password', component: ResetPasswordComponent, data: { title: 'ResetPassword'} },

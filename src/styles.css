@@ -1,1 +1,19 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0px;
+    background-color: white;
+}
+
+.userPhoto {
+    width: 80px;
+    height: 80px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-card {
+    margin: 10px;
+}
