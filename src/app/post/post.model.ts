@@ -1,8 +1,9 @@
 export class Post {
     id?: string;
     userid: string;
+    userName: string;
     content: string;
     likes: number;
-    date: Date;
+    date: string;
     isPublic: boolean;
 }

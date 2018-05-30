@@ -1,0 +1,11 @@
+mat-card {
+    width: 72%;
+    margin: auto;
+}
+mat-form-field {
+    width: 100%;
+}
+
+share-button {
+    float: right;
+}

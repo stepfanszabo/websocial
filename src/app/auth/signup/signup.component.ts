@@ -16,12 +16,8 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   hide = true;
 
-  constructor(
-    public fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router
-  ) { 
-    this.signUpForm = this.fb.group({
+  constructor(public formBuilder: FormBuilder, private auth: AuthService, private router: Router ) { 
+    this.signUpForm = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['',
         [
