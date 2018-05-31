@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from 'src/app/post/post.service';
 import { Post } from 'src/app/post/post.model';
 import { AuthService } from 'src/app/core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-dashboard',
@@ -13,7 +14,7 @@ export class PostDashboardComponent implements OnInit {
 
   postForm: FormGroup;
 
-  constructor(private postService: PostService, private formBuilder: FormBuilder, private auth: AuthService) { }
+  constructor(private postService: PostService, private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();

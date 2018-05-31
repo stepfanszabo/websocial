@@ -1,3 +1,42 @@
-<p>
-  post-list-item works!
-</p>
+<!-- <div *ngIf="post && post.isPublic">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title>{{post.userName}}</mat-card-title>
+      <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+      <p>{{post.content}}</p>
+    </mat-card-content>
+  </mat-card>
+</div> -->
+
+<main>
+  <div [hidden]="editing">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-header>
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(' +')'}"></div>
+          <mat-card-title>{{post.userName}}</mat-card-title>
+          <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+        </mat-card-header>
+        <p>{{post.content}}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-icon-button (click)="like(post.likes)">
+          Like
+          <span>{{post.likes}}</span>
+        </button>
+        <button mat-icon-button *ngIf="authService.currentUserId === post.userid" (click)="editing=true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="authService.currentUserId === post.userid" (click)="delete(post.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div [hidden]="!editing">
+    <mat-card>
+      edit mode
+    </mat-card>
+  </div>
+</main>

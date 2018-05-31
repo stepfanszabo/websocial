@@ -3,6 +3,7 @@ import { User } from 'src/app/user/user.model';
 import { AuthService } from '../../core/auth.service';
 import { UserService } from 'src/app/user/user.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -14,9 +15,13 @@ export class UserDashboardComponent implements OnInit {
   editing = false;
   user: User;
 
-  constructor(private authService: AuthService, private userService: UserService, private location: Location) { }
+  constructor(private authService: AuthService, private userService: UserService, private location: Location, private router: Router) { }
 
   ngOnInit() {
+    // console.log(this.authService.authenticated);
+    // if(!this.authService.authenticated) {
+    //   this.router.navigate(['/signin']);
+    // }
     this.getUser();
   }
 
@@ -25,7 +30,7 @@ export class UserDashboardComponent implements OnInit {
   }
 
   updateProfile() {
-    return this.userService.updateProfileName(this.user.displayName, this.user.photoURL);
+    return this.userService.updateProfileName(this.user.displayName);
   }
 
   updateUser() {

@@ -20,7 +20,10 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  exports: [PostDashboardComponent],
+  exports: [
+    PostDashboardComponent,
+    PostListItemComponent,
+    PostListComponent],
   declarations: [PostDashboardComponent, PostListComponent, PostListItemComponent],
   providers: [PostService]
 })

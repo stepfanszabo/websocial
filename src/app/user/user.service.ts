@@ -27,13 +27,19 @@ export class UserService {
     return this.userDoc.valueChanges();
   }
 
-  updateProfileName(displayName: string, photoURL: string) {
+  updateProfileName(displayName: string) {
     const user = this.authService.authState;
-    const data = { displayName, photoURL };
+    const data = { displayName };
     return user.updateProfile(data)
-            .then(() => this.afs.doc(`users/${user.uid}`).update({ displayName, photoURL }))
+            .then(() => this.afs.doc(`users/${user.uid}`).update({ displayName }))
             .then(() => console.log("Updated profile"))
             .catch(error => console.log(error.message));
+  }
+
+  getUserPhoto(id: string): string {
+    let url = this.getUser(id).subscribe(s => url = s.photoURL);
+    console.log(url);
+    return url;
   }
 
   updateUserData(data: any) {

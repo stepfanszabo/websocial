@@ -1,1 +1,10 @@
-<user-list-item *ngFor="let user of users | async" [user]= "user"></user-list-item>
+<table>
+    <tr>
+        <td>
+            <user-list-item *ngFor="let user of users | async" [user]= "user"></user-list-item>
+        </td>
+        <td class="post-td">
+            <app-post-list style="width: 100%"></app-post-list>
+        </td>
+    </tr>
+</table>

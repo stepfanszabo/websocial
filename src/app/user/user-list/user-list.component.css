@@ -1,0 +1,13 @@
+container {
+    float: left;
+}
+
+app-post-list {
+    float: left;
+}
+td {
+    vertical-align: top;
+}
+.post-td {
+    width: 80%;
+}

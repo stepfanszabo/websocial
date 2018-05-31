@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from '@sanity/observable';
 import { SharedModule } from '../../shared/shared.module';
 import { AuthService } from '../../core/auth.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,8 +17,9 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   hide = true;
 
-  constructor(public formBuilder: FormBuilder, private auth: AuthService, private router: Router ) { 
+  constructor(public formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService ) { 
     this.signUpForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['',
         [
@@ -31,11 +33,15 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  get name() {
+    return this.signUpForm.get('name');
+  }
 
   get email() {
     return this.signUpForm.get('email');
   }
-
+  
   get password() {
     return this.signUpForm.get('password');
   }
@@ -43,9 +49,10 @@ export class SignupComponent implements OnInit {
   signUp() {
     return this.auth.emailSignUp(this.email.value, this.password.value)
               .then(user => {
+                this.userService.updateProfileName(this.name.value);
                 console.log(this.signUpForm.valid);
                 if(this.signUpForm.valid) {
-                  this.router.navigate(['/']);
+                  this.router.navigate(['/dashboard']);
                 }
               })
   }

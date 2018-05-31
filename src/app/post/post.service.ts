@@ -16,8 +16,8 @@ export class PostService {
     this.postCollection = this.afs.collection("posts", list => list.orderBy("date","desc"));
   }
 
-  create(data: Post) {
-    return this.postCollection.add(data);
+  getPost(id: string) {
+    return this.afs.doc<Post>(`posts/${id}`);
   }
 
   getPosts(): Observable<Post[]> {
@@ -28,6 +28,18 @@ export class PostService {
         return  { id, ...data };
       });
     });
+  }
+  
+  create(data: Post) {
+    return this.postCollection.add(data);
+  }
+
+  delete(id: string) {
+    return this.getPost(id).delete();
+  }
+
+  update(id: string, data: any) {
+    return this.getPost(id).update(data);
   }
 
 }

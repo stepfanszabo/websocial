@@ -1,1 +1,11 @@
+<mat-toolbar color="primary">
+    <h1>WebSocial</h1>
+    <span class="spacer"></span>
+    <a mat-button href="/dashboard" *ngIf="this.authService.authenticated">{{getUserName()}}</a>
+    <a mat-button href="/posts" *ngIf="this.authService.authenticated">Posts</a>
+    <a mat-button (click)="signout()" *ngIf="this.authService.authenticated">Sign Out</a>
+    <img class="header-img" src="{{getUserPhoto()}}" *ngIf="this.authService.authenticated">
+    <a mat-button href="/signin" *ngIf="!this.authService.authenticated">Sign In</a>
+</mat-toolbar>
+  
 <router-outlet></router-outlet>

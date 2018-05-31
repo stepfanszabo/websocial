@@ -49,15 +49,13 @@ export class SigninComponent implements OnInit {
   }
     
   facebookLogin() {
-    return this.auth.loginWithGoogle();
+    return this.auth.loginWithFb();
   }
 
   signIn() {
     return this.auth.emailSignIn(this.email.value, this.password.value)
               .then(user => {
-                console.log(this.signInForm.valid);
                 if(this.signInForm.valid) {
-                  console.log("asd");
                   this.router.navigate(['/']);
                 }
               })

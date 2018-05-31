@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Md5 } from 'ts-md5/dist/md5';
 import * as firebase from 'firebase/app';
 
-import { Observable, from } from '@sanity/observable';
+import { Observable, from, of } from '@sanity/observable';
 import 'rxjs-compat/add/operator/switchMap';
 
 interface User {
@@ -44,9 +44,17 @@ export class AuthService {
   get authenticated(): boolean {
     return this.authState !== null;
   }
-
+  
   get currentUserId(): string {
     return this.authenticated ? this.authState.uid : null;
+  }
+  
+  get currentUserPhoto(): string {
+    return this.authenticated ? this.authState.photoURL : null;
+  }
+  
+  get currentUserName(): string {
+    return this.authenticated ? this.authState.displayName : null;
   }
 
   emailSignIn(email: string, password: string) {
@@ -79,7 +87,7 @@ export class AuthService {
   signOut() {
     return this.afAuth.auth.signOut()
                 .then(() => {
-                  this.router.navigate(['/'])
+                  this.router.navigate(['/signin']);
                 })
   }
 
